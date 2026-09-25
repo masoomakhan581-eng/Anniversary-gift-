@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 600px;
+      padding: 45px 25px;
+      text-align: center;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 5;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: heartbeat 1.2s infinite;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      margin-bottom: 15px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0 auto 25px;
+      max-width: 470px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      background: white;
+      color: #e94b78;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 25px;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -20px;
+      z-index: 100;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 35px 20px;
+      }
+
+      .heart {
+        font-size: 52px;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      button {
+        width: 90%;
+        padding: 14px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="heart">❤️</div>
+
+    <h1>Happy Anniversary!</h1>
+
+    <h2>To a beautiful couple 💕</h2>
+
+    <p>
+      May your love continue to grow stronger with every passing year.
+      Wishing you both countless beautiful memories, endless laughter,
+      and a lifetime filled with love and happiness.
+    </p>
+
+    <button onclick="celebrate()">
+      🎉 Celebrate Your Love
+    </button>
+
+    <div class="signature">
+      With lots of love ❤️
+    </div>
+  </div>
+
+  <script>
+    // Create floating hearts continuously
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.innerHTML = ["❤️", "💕", "💖", "💗", "💓"][Math.floor(Math.random() * 5)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 25) + "px";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 500);
+
+    // Confetti celebration
+    function celebrate() {
+      const pieces = 180;
+
+      for (let i = 0; i < pieces; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        const colors = [
+          "#ff1744",
+          "#ff4081",
+          "#ffd740",
+          "#69f0ae",
+          "#40c4ff",
+          "#e040fb",
+          "#ffffff"
+        ];
+
+        confetti.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.left = Math.random() * 100 + "vw";
+
+        confetti.style.width =
+          (5 + Math.random() * 8) + "px";
+
+        confetti.style.height =
+          (5 + Math.random() * 12) + "px";
+
+        confetti.style.animationDuration =
+          (2 + Math.random() * 4) + "s";
+
+        confetti.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 6500);
+      }
+
+      // Extra heart burst
+      for (let i = 0; i < 25; i++) {
+        setTimeout(createHeart, i * 50);
+      }
+    }
+  </script>
+
+</body>
+</html>
